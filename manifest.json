@@ -7,8 +7,7 @@
     "activeTab",
     "clipboardRead",
     "storage",
-    "scripting",
-    "https://hooks.slack.com/*"
+    "scripting"
   ],
   "host_permissions": [
     "https://hooks.slack.com/*"
