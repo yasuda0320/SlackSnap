@@ -1,10 +1,10 @@
 chrome.action.onClicked.addListener((tab) => {
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    func: () => navigator.clipboard.readText()
+    func: () => window.getSelection().toString()  // Get selected text
   }, (results) => {
     const selectedText = results[0].result;
-    console.log("Clipboard text:", selectedText);
+    console.log("Selected text:", selectedText);
     if (selectedText) {
       chrome.storage.sync.get(['slackWebhookUrl'], (data) => {
         const webhookUrl = data.slackWebhookUrl;
@@ -28,7 +28,7 @@ chrome.action.onClicked.addListener((tab) => {
         }
       });
     } else {
-      console.log("No text in clipboard. Please copy text first.");
+      console.log("No text selected on the page.");
     }
   });
 });
